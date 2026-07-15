@@ -1,0 +1,25 @@
+ALTRABIS WEBSITE — GITHUB PAGES DEPLOYMENT
+
+1. Upload every file and folder in this package directly to the root of the repository.
+   index.html, CNAME, .nojekyll and the _next folder must be at repository root.
+
+2. In GitHub, open Settings > Pages.
+
+3. Under Build and deployment:
+   Source: Deploy from a branch
+   Branch: main
+   Folder: / (root)
+
+4. Under Custom domain, enter:
+   altrabis.com
+
+5. Configure the domain DNS according to the current GitHub Pages instructions.
+   Do not change the domain's MX, SPF, DKIM or DMARC email records.
+
+6. After GitHub confirms the DNS and provisions the certificate, enable Enforce HTTPS.
+
+IMPORTANT
+- .nojekyll is required so GitHub serves the _next folder unchanged.
+- .htaccess was removed because GitHub Pages does not use Apache configuration.
+- The site uses root-relative paths such as /_next/..., which are correct for altrabis.com.
+- A temporary URL in the form username.github.io/repository may not render the assets correctly.
