@@ -1,0 +1,86 @@
+ALTRABIS WEBSITE
+GODADDY CPANEL DEPLOYMENT GUIDE
+Version: 15 July 2026
+
+PURPOSE
+
+This package contains the complete static ALTRABIS landing page. It does not
+require WordPress, a database, Node.js, PHP or a server application.
+
+REQUIREMENTS
+
+1. An active GoDaddy Web Hosting plan with cPanel.
+2. The domain altrabis.com added to that hosting account.
+3. The GoDaddy hosting IPv4 address shown in the hosting dashboard.
+4. An active SSL certificate before forcing HTTPS.
+
+UPLOAD
+
+1. Open GoDaddy Products.
+2. Under Web Hosting, select Manage.
+3. Open File Manager for altrabis.com.
+4. Open public_html if altrabis.com is the primary domain. For an addon domain,
+   open the document root assigned to altrabis.com.
+5. Back up any existing files before replacement.
+6. Upload ALTRABIS_GoDaddy_Deployment.zip.
+7. Extract the ZIP directly inside the document root.
+8. Confirm that index.html, favicon.svg, .htaccess and the _next folder are
+   directly inside the document root. They must not remain inside another
+   nested folder.
+9. If .htaccess is not visible, open File Manager Settings and enable Show
+   Hidden Files.
+
+DNS
+
+Replace the existing website records with:
+
+Record 1
+Type: A
+Name: @
+Value: the GoDaddy Web Hosting IPv4 address
+
+Record 2
+Type: CNAME
+Name: www
+Value: altrabis.com
+
+Remove or replace the current www CNAME that points to
+custom-domains.chatgpt.site.
+
+Do not change MX, SPF, DKIM, DMARC or other email records. The two OpenAI domain
+verification TXT records can be removed after the GoDaddy deployment is fully
+verified, but they do not block the migration.
+
+SSL AND HTTPS
+
+1. Wait until the domain points to the GoDaddy hosting account.
+2. Run AutoSSL in cPanel if the hosting plan includes it, or install the SSL
+   certificate assigned to the domain.
+3. Confirm that https://www.altrabis.com opens without a certificate warning.
+4. Only after the SSL certificate is active, enable the GoDaddy HTTPS redirect.
+
+FINAL CHECK
+
+1. Open https://www.altrabis.com in a private browser window.
+2. Check the desktop and mobile layouts.
+3. Test Platform, Standards, Execution and Contact navigation.
+4. Test contact@altrabis.com, partnerships@altrabis.com and
+   investors@altrabis.com links.
+5. Confirm that no old GoDaddy placeholder page remains.
+
+ROLLBACK
+
+Keep the existing hosted ALTRABIS URL active until the GoDaddy deployment, DNS
+and SSL have all been verified. If required, restore the public_html backup and
+restore the earlier DNS values.
+
+OFFICIAL GODADDY REFERENCES
+
+Upload files:
+https://www.godaddy.com/help/upload-files-using-my-web-hosting-cpanel-file-manager-3239
+
+Configure cPanel DNS:
+https://www.godaddy.com/help/configuring-dns-for-your-web-hosting-cpanel-domain-8852
+
+AutoSSL:
+https://www.godaddy.com/help/install-an-ssl-using-autossl-on-my-web-hosting-cpanel-41641
